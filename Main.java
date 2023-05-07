@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -8,16 +11,18 @@ public class Main {
 
         String userInput = scanner.nextLine().toUpperCase();
         
+        String result = "";
         switch (userInput) {
             case "ONE":
-                System.out.println("You selected ONE");
+                result = "You selected ONE";
                 break;
             case "TWO":
-                System.out.println("You selected TWO");
+                result = "You selected TWO";
                 break;
             default:
                 System.out.println("Invalid input bruh");
                 break;
         }    
+        System.out.println(result);
     }
 }
