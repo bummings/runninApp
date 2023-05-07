@@ -24,5 +24,11 @@ public class Main {
                 break;
         }    
         System.out.println(result);
+
+        try (FileWriter fileWriter = new FileWriter("selection.txt", true)) {
+            fileWriter.write(result + System.lineSeparator());
+        } catch (IOException e) {
+            System.out.println("big time problem bruh" + e.getMessage());
+        }
     }
 }
