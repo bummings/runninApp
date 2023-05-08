@@ -1,5 +1,9 @@
-//    FileWriter for data persistance
-//    IOException for catching errors for data persistance
+// The following imports:
+//    Scanner for text input
+//    LocalDateTime to generate time stamp
+//    DateTimeFormatter to format time stamp
+//    FileWriter to persist data in output.txt
+//    IOException to handle any errors with IO
 
 import java.util.Scanner;
 import java.time.LocalDateTime;
@@ -12,6 +16,9 @@ public class RunInput {
         System.out.println("Enter miles: ");
         Double milesInput = scanner.nextDouble();
 
+        // Utilizing the LocalDateTime library to generate timestamp,
+        // and running it thru the DateTimeFormatter library to shape
+        // it more cohesively for the output.txt file for persistance.
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = now.format(formatter);
