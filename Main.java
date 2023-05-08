@@ -42,15 +42,6 @@ public class Main {
         }
         System.out.println(result);
 
-        // This try catch statement will attempt to write
-        // the result to a text file for data persistance
-        // and will throw an error if the attempt is
-        // unsuccessful.
-        try (FileWriter fileWriter = new FileWriter("selection.txt", true)) {
-            fileWriter.write(result + System.lineSeparator());
-        } catch (IOException e) {
-            System.out.println("big time problem bruh" + e.getMessage());
-        }
         // Closing the scanner to get rid of compiler
         // warnings.
         scanner.close();

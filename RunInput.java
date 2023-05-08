@@ -16,6 +16,10 @@ public class RunInput {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String timestamp = now.format(formatter);
 
+        // This try catch statement will attempt to write
+        // the result to a text file for data persistance
+        // and will throw an error if the attempt is
+        // unsuccessful.
         try (FileWriter fileWriter = new FileWriter("output.txt", true)) {
             fileWriter.write(timestamp + ": " + milesInput + System.lineSeparator());
         } catch (IOException e) {
