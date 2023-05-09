@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
 
 public class RunInput {
     public Double handle(Scanner scanner) {
@@ -28,6 +29,17 @@ public class RunInput {
                 // Utilizing the LocalDateTime library
                 // to generate timestamp
                 LocalDateTime now = LocalDateTime.now();
+
+                // Create miles.txt if it does not
+                // exist.
+                File file = new File("miles.txt");
+                if (!file.exists()) {
+                    try {
+                        file.createNewFile();
+                    } catch (IOException e) {
+                        System.out.println("Error occured while trying to create a new file.");
+                    }
+                }
 
                 // Running it thru the DateTimeFormatter
                 // library to shape it nicely

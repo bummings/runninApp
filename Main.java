@@ -5,6 +5,10 @@ public class Main {
         // Initialize scanner for input
         Scanner scanner = new Scanner(System.in);
 
+        // Initialize the RunData class
+        RunData runData = new RunData();
+        double weeklyAverage = runData.getWeeklyAverage();
+
         // This is the entry point for the run tracker.
         System.out.println("Welcome to run tracker. ");
         System.out.println("What do you want to do? \n1. Enter a run\n2. Enter shoes\n3. See weekly average\n ");
@@ -34,6 +38,8 @@ public class Main {
                 System.out.println("Your shoes: " + shoeInputName);
                 break;
 
+            case 3:
+                System.out.println("Your weekly average: " + weeklyAverage);
             default:
                 System.out.println("Invalid input bruh");
                 break;
