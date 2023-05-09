@@ -7,7 +7,7 @@ public class Main {
 
         // This is the entry point for the run tracker.
         System.out.println("Welcome to run tracker. ");
-        System.out.println("What do you want to do? \n1. Enter a run\n2. Enter shoes\n ");
+        System.out.println("What do you want to do? \n1. Enter a run\n2. Enter shoes\n3. See weekly average\n ");
 
         // Grab user input, capitalize the input to avoid
         // any gotchas with lowercase input

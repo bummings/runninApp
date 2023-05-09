@@ -24,13 +24,13 @@ public class RunInput {
             // have the user input again.
             if (scanner.hasNextDouble()) {
                 milesInput = scanner.nextDouble();
+
                 // Utilizing the LocalDateTime library
-                // to generate timestamp,and running
-                // it thru the DateTimeFormatter
-                // library to shape it more cohesively
-                // for the output.txt file for
-                // persistance.
+                // to generate timestamp
                 LocalDateTime now = LocalDateTime.now();
+
+                // Running it thru the DateTimeFormatter
+                // library to shape it nicely
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String timestamp = now.format(formatter);
 
@@ -39,7 +39,7 @@ public class RunInput {
                 // persistance and will throw an error if
                 // the attempt is unsuccessful.
                 try (FileWriter fileWriter = new FileWriter("miles.txt", true)) {
-                    fileWriter.write(timestamp + ": " + milesInput + System.lineSeparator());
+                    fileWriter.write(timestamp + "," + milesInput + System.lineSeparator());
                 } catch (IOException e) {
                     System.out.println("Problem encountered while trying to save to file: " + e.getMessage());
                 }
