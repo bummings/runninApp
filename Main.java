@@ -40,8 +40,9 @@ public class Main {
 
             case 3:
                 System.out.println("Your weekly average: " + weeklyAverage);
+                break;
             default:
-                System.out.println("Invalid input bruh");
+                System.out.println("Invalid input!");
                 break;
         }
 
