@@ -45,9 +45,5 @@ public class Main {
                 System.out.println("Invalid input!");
                 break;
         }
-
-        // Closing the scanner to get rid of compiler
-        // warnings.
-        // scanner.close();
     }
 }
