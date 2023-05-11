@@ -137,6 +137,8 @@ Task
 
 While writing and testing your program code, describe your tests, record any errors, and state your approach to fixing the errors.
 
+There was a lot of trouble with ensuring that the run data entered was saving in the expected shape in the miles.txt file. Using the DateFormatter library, I was thinking it would be a lot easier to
+
 Requirements
 
 - For at least one of your test cases, describe how your choices for the test helped you understand whether the program was running correctly or not.
