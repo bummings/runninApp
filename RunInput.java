@@ -1,10 +1,3 @@
-// The following imports:
-//    Scanner for text input
-//    LocalDateTime to generate time stamp
-//    DateTimeFormatter to format time stamp
-//    FileWriter to persist data in output.txt
-//    IOException to handle any errors with IO
-
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,15 +7,15 @@ import java.io.File;
 
 public class RunInput {
     public Double handle(Scanner scanner, ShoeInput shoeInput) {
-        // initialize milesInput variable
+        // initialize milesInput and shoesImport variable
         Double milesInput = null;
         String shoesInput = null;
 
+        // ensure milesInput is clear
         while (milesInput == null) {
             System.out.println("Enter miles: ");
 
-            // ensure that a double is entered, otherwise reject the input a nd have the
-            // user
+            // ensure that a double is entered, otherwise reject the input and have the user
             // input again.
             if (scanner.hasNextDouble()) {
                 milesInput = scanner.nextDouble();
@@ -30,10 +23,13 @@ public class RunInput {
                 // clear the scanner for any extra characters
                 scanner.nextLine();
                 shoesInput = shoeInput.handle(scanner);
-                // use ShoeInput's method to get miles for shoe
+
+                // use ShoeInput's method to get current miles for shoe so can add the new miles
+                // to the previous miles
                 double previousMiles = shoeInput.getMilesForShoe(shoesInput);
                 // use ShoeInput's method to set miles for shoe
                 shoeInput.setMilesForShoe(shoesInput, previousMiles + milesInput);
+                // save updated shoe to shoes.txt
                 shoeInput.saveShoes();
 
                 // Utilizing the LocalDateTime library to generate timestamp
@@ -53,8 +49,8 @@ public class RunInput {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String timestamp = now.format(formatter);
 
-                // This try catch statement will attempt to write the result to a text file for
-                // data persistance and will throw an error if the attempt is unsuccessful.
+                // This try/catch statement will attempt to write the result to miles.txt data
+                // persistance and will throw an error if the attempt is unsuccessful
                 try (FileWriter fileWriter = new FileWriter("miles.txt", true)) {
                     fileWriter.write(timestamp + "," + milesInput + ", " + shoesInput + System.lineSeparator());
                 } catch (IOException e) {
@@ -66,7 +62,6 @@ public class RunInput {
             }
 
         }
-
         return milesInput;
     }
 }
