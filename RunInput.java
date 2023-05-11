@@ -21,7 +21,8 @@ public class RunInput {
         while (milesInput == null) {
             System.out.println("Enter miles: ");
 
-            // ensure that a double is entered, otherwise reject the input and have the user
+            // ensure that a double is entered, otherwise reject the input a nd have the
+            // user
             // input again.
             if (scanner.hasNextDouble()) {
                 milesInput = scanner.nextDouble();
