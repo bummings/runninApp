@@ -40,8 +40,32 @@ public class ShoeInput {
 
     // grab shoe name
     public String handle(Scanner scanner) {
-        System.out.println("Enter shoes: ");
-        String shoeInput = scanner.nextLine();
+        System.out.println("Select a shoe: ");
+        List<String> shoeNames = new ArrayList<>(shoeMiles.keySet());
+        for (int i = 0; i < shoeNames.size(); i++) {
+            System.out.println(i + 1 + ". " + shoeNames.get(i));
+        }
+        System.out.println("\n(0. Add a new shoe)");
+
+        String shoeInput = null;
+        while (shoeInput == null) {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+
+                if (choice == 0) {
+                    shoeInput = addShoe(scanner);
+                } else if (choice > 0 && choice <= shoeNames.size()) {
+                    shoeInput = shoeNames.get(choice - 1);
+                } else {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    scanner.next();
+                }
+
+            } else {
+                System.out.println("Invalid inout. Please enter a valid number.");
+            }
+        }
 
         // Write shoes to shoes.txt, handle any
         // error that may occur during the IO
@@ -108,4 +132,13 @@ public class ShoeInput {
     public void setMilesForShoe(String shoe, double miles) {
         shoeMiles.put(shoe, miles);
     }
+
+    private String addShoe(Scanner scanner) {
+        System.out.println("Enter the name of the new shoe:");
+        String shoeName = scanner.nextLine().trim();
+        shoeMiles.put(shoeName, 0.0);
+        saveShoes();
+        return shoeName;
+    }
+
 }

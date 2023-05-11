@@ -26,6 +26,8 @@ public class RunInput {
             if (scanner.hasNextDouble()) {
                 milesInput = scanner.nextDouble();
 
+                // clear the scanner for any extra characters
+                scanner.nextLine();
                 shoesInput = shoeInput.handle(scanner);
                 // use ShoeInput's method to get miles for shoe
                 double previousMiles = shoeInput.getMilesForShoe(shoesInput);

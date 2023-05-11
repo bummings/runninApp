@@ -29,10 +29,8 @@ public class Main {
         switch (userInput) {
             // Enter run
             case 1:
-                // Utilize the RunInput class in Main
-                // class: this will handle the logic of
-                // accepting the miles ran, calculate the
-                // averages, and save them to a text file
+                // Utilize the RunInput class in Main class: this will handle the logic of
+                // accepting the miles ran, calculate the averages, and save them to a text file
                 // for data persistance.
                 RunInput runInput = new RunInput();
                 Double runInputMiles = runInput.handle(scanner, shoeInput);
@@ -52,11 +50,13 @@ public class Main {
 
             // Display shoe milages
             case 4:
+                // map over the shoes and for each one display the value associated with it's
+                // key.
                 Map<String, Double> shoeMiles = shoeInput.getShoeMiles();
                 for (Map.Entry<String, Double> entry : shoeMiles.entrySet()) {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
-                    break;
                 }
+                break;
             default:
                 System.out.println("Invalid input!");
                 break;
