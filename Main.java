@@ -23,8 +23,7 @@ public class Main {
         Integer userInput = scanner.nextInt();
         scanner.nextLine(); // Consume the remaining line separator
 
-        // Initialize an empty string for the menu
-        // selection.
+        // Menu for selection
         switch (userInput) {
             // Enter run
             case 1:
@@ -36,7 +35,7 @@ public class Main {
                 System.out.println("Your miles ran today: " + runInputMiles);
                 break;
 
-            // Enter shoes
+            // Enter a new pair of shoes and set their milage to 0.0 miles
             case 2:
                 String shoeInputName = shoeInput.handle(scanner);
                 System.out.println("Your shoes: " + shoeInputName);
@@ -47,7 +46,7 @@ public class Main {
                 System.out.println("Your weekly average: " + weeklyAverage);
                 break;
 
-            // Display shoe milages
+            // Display current shoe milages
             case 4:
                 // map over the shoes and for each one display the value associated with it's
                 // key.
