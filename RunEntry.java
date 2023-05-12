@@ -9,6 +9,7 @@ public class RunEntry {
         this.miles = miles;
     }
 
+    // getters for miles and date on specific run
     public LocalDate getDate() {
         return date;
     }
