@@ -12,7 +12,6 @@ public class Main {
         double weeklyAverage = runData.getWeeklyAverage();
 
         // This is the entry point for the run tracker.
-        System.out.println("Welcome to run tracker. ");
         System.out.println("Welcome to Run Tracker.");
         System.out.println("1. Enter a run");
         System.out.println("2. Enter shoes");

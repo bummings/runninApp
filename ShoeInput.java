@@ -22,11 +22,12 @@ public class ShoeInput {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 // splits line in shoes.txt into two elements: shoe name and miles broken up by
-                // commas
+                // commas.
                 String[] parts = line.split(",");
-                // check if there is a length greater than 1, i.e. checks to see there are miles
-                // associated with the shoe already. Each new shoe is set at 0 miles. ["Asics
-                // Novablast",120]
+
+                // checks if miles have been associated with the shoe by determining if there
+                // more than one element in the entry. If there are miles associated with the
+                // show, length would be more than 1.
                 if (parts.length > 1) {
                     shoeMiles.put(parts[0], Double.valueOf(parts[1]));
                 } else {
@@ -38,9 +39,12 @@ public class ShoeInput {
         }
     }
 
-    // grab shoe name
+    // Prompts the user to choose a shoe in the shoes.txt collection
     public String handle(Scanner scanner) {
         System.out.println("Select a shoe: ");
+
+        // Loop over and display all shoes current in shoes.txt. Display available shoes
+        // as a picklist adjusted for the 0-based index of the loop counter.
         List<String> shoeNames = new ArrayList<>(shoeMiles.keySet());
         for (int i = 0; i < shoeNames.size(); i++) {
             System.out.println(i + 1 + ". " + shoeNames.get(i));
@@ -54,6 +58,7 @@ public class ShoeInput {
                 scanner.nextLine();
 
                 if (choice == 0) {
+                    // calls the addShoe method defined below
                     shoeInput = addShoe(scanner);
                 } else if (choice > 0 && choice <= shoeNames.size()) {
                     shoeInput = shoeNames.get(choice - 1);
@@ -67,9 +72,8 @@ public class ShoeInput {
             }
         }
 
-        // Write shoes to shoes.txt, handle any
-        // error that may occur during the IO
-        // with the try catch statement.
+        // Write shoes to shoes.txt, handle any error that may occur during the IO with
+        // the try catch statement.
         try (FileWriter fileWriter = new FileWriter("shoes.txt", true)) {
             fileWriter.write(shoeInput + System.lineSeparator());
         } catch (IOException e) {
@@ -93,11 +97,6 @@ public class ShoeInput {
     // miles.
     public Map<String, Double> getShoeMiles() {
         return new HashMap<>(shoeMiles);
-    }
-
-    public void addMiles(String shoe, double miles) {
-        shoeMiles.put(shoe, shoeMiles.getOrDefault(shoe, 0.0) + miles);
-        saveShoes();
     }
 
     // Load the shoes that are in shoes.txt into the shoeMiles map, checking if
@@ -129,10 +128,12 @@ public class ShoeInput {
         return shoeMiles.getOrDefault(shoe, 0.0);
     }
 
+    // Method for adding miles to shoe upon new run (previous miles + new miles)
     public void setMilesForShoe(String shoe, double miles) {
         shoeMiles.put(shoe, miles);
     }
 
+    // Adds new shoe and sets shoe milage to 0.0 miles
     private String addShoe(Scanner scanner) {
         System.out.println("Enter the name of the new shoe:");
         String shoeName = scanner.nextLine().trim();
