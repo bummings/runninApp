@@ -64,7 +64,7 @@ public class ShoeInput {
                     shoeInput = shoeNames.get(choice - 1);
                 } else {
                     System.out.println("Invalid input. Please enter a valid number.");
-                    scanner.next();
+                    scanner.nextLine();
                 }
 
             } else {
